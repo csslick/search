@@ -1,3 +1,7 @@
+/* 
+  Custom Search & Sorting V1.0
+  2018.02.27 By CSSLICK
+*/
 $(function(){
 
   // 주소 데이터 로딩
