@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>지점 찾기 - google map</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="search.js"></script>
 </head>
 <body>
   <select name="city" id="city">
@@ -20,7 +21,7 @@
 
   <form id='s'> 
     <p>
-      <input type="search" id="search">
+      <input type="search" id="search" required>
       <button id="submit">검색</button>
     </p>  
   </form>
@@ -31,42 +32,6 @@
   <div id="map">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.5478323142397!2d127.1182131509609!3d37.49499537971239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca58f4ae6d083%3A0x6f64a0b74c741c40!2z7KOg7Iqk65ah67O27J206rCA65297KCQ!5e0!3m2!1sko!2skr!4v1548423529327" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>    
   </div>
-
-<script src="data.js"></script>
-  <script>
-    // 주소 목록 출력
-    function show_list(){
-      var list = '';
-      $(data).each(function(i, d){
-        list += '<li>' + data[i].name;
-        list += '<p>' + data[i].addr + '</p>';
-        list += '</li>';
-      });
-      $('#address_list').append(list);
-    }
-    show_list();
-
-    $('#city').on('change', function(){
-      var i = $(this).prop('selectedIndex');
-      console.log(i);
-      $('#map iframe').attr('src', data[i-1].url);
-    })
-
-    // 검색
-    $('#submit').on('click', function(){
-      var txt = $('#search').val();
-      for(var i in data){
-        if(data[i].name.indexOf(txt) != -1){
-          $('#address_list').html(data[i].name);
-          $('#map iframe').attr('src', data[i].url);
-          return false;
-        } 
-        $('#address_list').html('검색 결과가 없습니다.');
-      }
-      return false;
-    });
-
-  </script>
 
 </body>
 </html>
